@@ -37,6 +37,18 @@ def safe_number_input(number_type: type, lower_bound=None, upper_bound=None):
     return user_input
 
 
+def execute(img, f1, f2, number_type=int):
+    data_type = np.uint8
+    color_model = 'RGB'
+
+    factor = safe_number_input(number_type, 1)
+    args = [factor]
+    result = Image.fromarray(one_iteration_discretization(
+        img, factor, f1, f2).astype(data_type), color_model)
+
+    return result
+
+
 images = {
     'debian': 'debian.png',
     'figures': 'figures.png'
@@ -55,8 +67,6 @@ if __name__ == '__main__':
     selected_image = prompt(images)
     img = image_to_np_array(selected_image)
     args = []
-    color_model = 'RGB'
-    data_type = np.uint8
 
     print('Выберите операцию:')
     selected_operation = prompt(operation_classes)
@@ -64,22 +74,13 @@ if __name__ == '__main__':
     match selected_operation:
         case 'int':
             print('Введите целый коэффициент растяжения')
-            factor = safe_number_input(int, 1)
-            args = [factor]
-            result = Image.fromarray(one_iteration_discretization(
-                img, factor, lambda a, b: a * b, 
-                lambda a, b: int(round(a / b)))
-                .astype(data_type), color_model)
+            result = execute(img, lambda a, b: a * b,
+                             lambda a, b: int(round(a / b)))
 
         case 'dec':
             print('Введите целый коэффициент сжатия')
-            factor = safe_number_input(int, 1)
-            args = [factor]
-            result = Image.fromarray(one_iteration_discretization(
-                img, factor, lambda a, b: int(round(a / b)), 
-                lambda a, b: a * b)
-                .astype(data_type), 
-                color_model)
+            result = execute(img, lambda a, b: int(round(a / b)),
+                             lambda a, b: a * b)
 
         case 'two':
             print('Введите целый коэффициент растяжения')
@@ -90,22 +91,19 @@ if __name__ == '__main__':
 
             args = [numerator, denominator]
             result = Image.fromarray(
-                two_iteration_discretization(img, *args).astype(data_type))
+                two_iteration_discretization(img, *args).astype(np.uint8),
+                'RGB')
+
         case 'one':
             print('Введите дробный коэффициент растяжения/сжатия')
-            factor = safe_number_input(float, 0)
-            args = [factor]
+            result = execute(img, lambda a, b: int(round(a * b)),
+                             lambda a, b: int(round(a / b)), float)
 
-            result = Image.fromarray(one_iteration_discretization(
-                img, factor, lambda a, b: int(round(a * b)), 
-                lambda a, b: int(round(a / b)))
-                .astype(data_type), 
-                color_model)
         case _:
             result = Image.fromarray(one_iteration_discretization(
                 img, [2], lambda a, b: a * b, lambda a, b: int(round(a / b)))
-                .astype(data_type), 
-                color_model)
+                .astype(np.uint8),
+                'RGB')
 
     print('Введите название сохраненного изображения (оставьте пустым, чтобы \
 не сохранять)')
