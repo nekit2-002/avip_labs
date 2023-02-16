@@ -41,8 +41,7 @@ def execute(img, f1, f2, number_type=int):
     data_type = np.uint8
     color_model = 'RGB'
 
-    factor = safe_number_input(number_type, 1)
-    args = [factor]
+    factor = safe_number_input(number_type, 0.5)
     result = Image.fromarray(one_iteration_discretization(
         img, factor, f1, f2).astype(data_type), color_model)
 
