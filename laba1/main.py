@@ -50,8 +50,7 @@ def execute(img, f1, f2, number_type=int):
 
 
 images = {
-    'debian': 'debian.png',
-    'figures': 'figures.png'
+   'Uzumaki': 'uzumaki.png'
 }
 
 
