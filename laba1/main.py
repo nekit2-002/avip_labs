@@ -100,10 +100,7 @@ if __name__ == '__main__':
                              lambda a, b: int(round(a / b)), float)
 
         case _:
-            result = Image.fromarray(one_iteration_discretization(
-                img, [2], lambda a, b: a * b, lambda a, b: int(round(a / b)))
-                .astype(np.uint8),
-                'RGB')
+            exit()
 
     print('Введите название сохраненного изображения (оставьте пустым, чтобы \
 не сохранять)')

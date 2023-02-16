@@ -15,7 +15,7 @@ def two_iteration_discretization(img: np.array, numerator: int,
                                         lambda a, b: a * b)
 
 
-def one_iteration_discretization(img: np.array, factor: float, f1, f2) -> np.array:
+def one_iteration_discretization(img: np.array, factor: float, f1, f2):
     dimensions = img.shape[0:2]
     new_dimensions = tuple(f1(dimension, factor) for dimension in
                            dimensions)
