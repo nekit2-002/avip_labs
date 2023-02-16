@@ -57,7 +57,6 @@ if __name__ == '__main__':
     color_model = 'RGB'
     data_type = np.uint8
 
-
     print('Выберите операцию:')
     selected_operation = prompt(operation_classes)
 
@@ -84,9 +83,11 @@ if __name__ == '__main__':
         factor = safe_number_input(float, 0)
         args = [factor]
 
-    result = Image.fromarray(selected_operation(np.array(img), *args).astype(data_type), color_model)
+    result = Image.fromarray(selected_operation(np.array(img), *args)
+                             .astype(data_type), color_model)
 
-    print('Введите название сохраненного изображения (оставьте пустым, чтобы не сохранять)')
+    print('Введите название сохраненного изображения (оставьте пустым, чтобы \
+          не сохранять)')
     selected_path = input()
     if selected_path:
         result.save(path.join('pictures_results', selected_path))
