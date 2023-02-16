@@ -1,3 +1,4 @@
+#! /bin/bash
 from resampling import *
 
 
@@ -47,50 +48,45 @@ operation_classes = {
         'Однопроходная передискретизация': one_iteration_discretization
 }
 
-
-
 if __name__ == '__main__':
     print('Выберите изображение:')
     selected_image = prompt(images)
     img = image_to_np_array(selected_image)
-    print('Выберите вид обработки:')
-    selected_operation_class = prompt(operation_classes)
     args = []
     color_model = 'RGB'
     data_type = np.uint8
 
-    if isinstance(selected_operation_class, dict):
-        print('Выберите операцию:')
-        selected_operation = prompt(selected_operation_class)
 
-        if selected_operation == interpolate:
-            print('Введите целый коэффициент растяжения')
-            factor = safe_number_input(int, 1)
-            args = [factor]
+    print('Выберите операцию:')
+    selected_operation = prompt(operation_classes)
 
-        if selected_operation == decimate:
-            print('Введите целый коэффициент сжатия')
-            factor = safe_number_input(int, 1)
-            args = [factor]
+    if selected_operation == interpolate:
+        print('Введите целый коэффициент растяжения')
+        factor = safe_number_input(int, 1)
+        args = [factor]
 
-        if selected_operation == two_iteration_discretization:
-            print('Введите целый коэффициент растяжения')
-            numerator = safe_number_input(int, 1)
+    if selected_operation == decimate:
+        print('Введите целый коэффициент сжатия')
+        factor = safe_number_input(int, 1)
+        args = [factor]
 
-            print('Введите целый коэффициент сжатия')
-            denominator = safe_number_input(int, 1)
+    if selected_operation == two_iteration_discretization:
+        print('Введите целый коэффициент растяжения')
+        numerator = safe_number_input(int, 1)
 
-            args = [numerator, denominator]
-        if selected_operation == one_iteration_discretization:
-            print('Введите дробный коэффициент растяжения/сжатия')
-            factor = safe_number_input(float, 0)
-            args = [factor]
+        print('Введите целый коэффициент сжатия')
+        denominator = safe_number_input(int, 1)
 
-    img.show()
+        args = [numerator, denominator]
+    if selected_operation == one_iteration_discretization:
+        print('Введите дробный коэффициент растяжения/сжатия')
+        factor = safe_number_input(float, 0)
+        args = [factor]
+
     result = Image.fromarray(selected_operation(np.array(img), *args).astype(data_type), color_model)
-    result.show()
+    # result.show()
 
     print('Введите название сохраненного изображения (оставьте пустым, чтобы не сохранять)')
     selected_path = input()
     if selected_path:
-        result.save(path.join('pctures_results', selected_path))
+        result.save(path.join('pictures_results', selected_path))
