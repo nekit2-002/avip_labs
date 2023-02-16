@@ -16,6 +16,7 @@ def prompt(variants: dict):
             input_correct = True
         except ValueError:
             print("Введите корректное значение")
+
     return dict(enumerate(variants.values(), 1))[user_input]
 
 
