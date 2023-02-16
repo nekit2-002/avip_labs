@@ -66,7 +66,6 @@ if __name__ == '__main__':
     print('Выберите изображение:')
     selected_image = prompt(images)
     img = image_to_np_array(selected_image)
-    args = []
 
     print('Выберите операцию:')
     selected_operation = prompt(operation_classes)
