@@ -10,7 +10,10 @@ def image_to_np_array(image_name: str) -> np.array:
 
 def two_iteration_discretization(img: np.array, numerator: int,
                                  denominator: int) -> np.array:
-    return one_iteration_discretization(one_iteration_discretization(img, numerator, lambda a, b: a * b, lambda a, b: int(round(a / b))), denominator, lambda a, b: int(round(a / b)), lambda a, b: a * b)
+    return one_iteration_discretization(one_iteration_discretization(img, numerator, lambda a, b: a * b,
+                                        lambda a, b: int(round(a / b))), denominator, lambda a, b: int(round(a / b)),
+                                        lambda a, b: a * b)
+
 
 def one_iteration_discretization(img: np.array, factor: float, f1, f2) -> np.array:
     dimensions = img.shape[0:2]

@@ -67,14 +67,19 @@ if __name__ == '__main__':
             factor = safe_number_input(int, 1)
             args = [factor]
             result = Image.fromarray(one_iteration_discretization(
-                img, factor, lambda a, b: a * b, lambda a, b: int(round(a / b))).astype(data_type), color_model)
+                img, factor, lambda a, b: a * b, 
+                lambda a, b: int(round(a / b)))
+                .astype(data_type), color_model)
 
         case 'dec':
             print('Введите целый коэффициент сжатия')
             factor = safe_number_input(int, 1)
             args = [factor]
-            result = Image.fromarray(one_iteration_discretization(img, factor, lambda a, b: int(
-                round(a / b)), lambda a, b: a * b).astype(data_type), color_model)
+            result = Image.fromarray(one_iteration_discretization(
+                img, factor, lambda a, b: int(round(a / b)), 
+                lambda a, b: a * b)
+                .astype(data_type), 
+                color_model)
 
         case 'two':
             print('Введите целый коэффициент растяжения')
@@ -92,13 +97,18 @@ if __name__ == '__main__':
             args = [factor]
 
             result = Image.fromarray(one_iteration_discretization(
-                img, factor, lambda a, b: int(round(a * b)), lambda a, b: int(round(a / b))).astype(data_type), color_model)
+                img, factor, lambda a, b: int(round(a * b)), 
+                lambda a, b: int(round(a / b)))
+                .astype(data_type), 
+                color_model)
         case _:
             result = Image.fromarray(one_iteration_discretization(
-                img, [2], lambda a, b: a * b, lambda a, b: int(round(a / b))).astype(data_type), color_model)
+                img, [2], lambda a, b: a * b, lambda a, b: int(round(a / b)))
+                .astype(data_type), 
+                color_model)
 
     print('Введите название сохраненного изображения (оставьте пустым, чтобы \
-          не сохранять)')
+не сохранять)')
     selected_path = input()
     if selected_path:
         result.save(path.join('pictures_results', selected_path))
