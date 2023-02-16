@@ -1,8 +1,9 @@
 from PIL import Image
 import numpy as np
+from os import path
 
 def image_to_np_array(image_name: str) -> np.array:
-    img_src = Image.open('pictures_src/' + image_name).convert('RGB')
+    img_src = Image.open(r"pictures_src\\" + image_name).convert('RGB')
     return np.array(img_src)
 
 def interpolate(img: np.array, factor: int) -> np.array:
