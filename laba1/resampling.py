@@ -2,9 +2,11 @@ from PIL import Image
 import numpy as np
 from os import path
 
+
 def image_to_np_array(image_name: str) -> np.array:
     img_src = Image.open(path.join('pictures_src', image_name)).convert('RGB')
     return np.array(img_src)
+
 
 def interpolate(img: np.array, factor: int) -> np.array:
     dimensions = img.shape[0:2]
@@ -22,7 +24,8 @@ def interpolate(img: np.array, factor: int) -> np.array:
 
 def decimate(img: np.array, factor: int) -> np.array:
     dimensions = img.shape[0:2]
-    new_dimensions = tuple(int(round(dimension / factor)) for dimension in dimensions)
+    new_dimensions = tuple(int(round(dimension / factor)) for dimension in
+                           dimensions)
     new_shape = (*new_dimensions, img.shape[2])
     new_img = np.empty(new_shape)
     for x in range(new_dimensions[0]):
@@ -34,13 +37,15 @@ def decimate(img: np.array, factor: int) -> np.array:
     return new_img
 
 
-def two_iteration_discretization(img: np.array, numerator: int, denominator: int) -> np.array:
+def two_iteration_discretization(img: np.array, numerator: int,
+                                 denominator: int) -> np.array:
     return decimate(interpolate(img, numerator), denominator)
 
 
 def one_iteration_discretization(img: np.array, factor: float) -> np.array:
     dimensions = img.shape[0:2]
-    new_dimensions = tuple(int(round(dimension * factor)) for dimension in dimensions)
+    new_dimensions = tuple(int(round(dimension * factor)) for dimension in
+                           dimensions)
     new_shape = (*new_dimensions, img.shape[2])
     new_img = np.empty(new_shape)
     for x in range(new_dimensions[0]):
@@ -50,6 +55,7 @@ def one_iteration_discretization(img: np.array, factor: float) -> np.array:
                 min(int(round(y / factor)), dimensions[1] - 1)
             ]
     return new_img
+
 
 if __name__ == '__main__':
     pass

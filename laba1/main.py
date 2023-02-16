@@ -1,11 +1,10 @@
-#! /bin/bash
 from resampling import *
 
 
 def prompt(variants: dict):
     for number, variant in enumerate(variants.keys(), 1):
         print(f'{number} - {variant}')
-        
+
     input_correct = False
     user_input = 0
 
@@ -23,6 +22,7 @@ def prompt(variants: dict):
 def safe_number_input(number_type: type, lower_bound=None, upper_bound=None):
     input_correct = False
     user_input = 0
+
     while not input_correct:
         try:
             user_input = number_type(input('> '))
@@ -34,6 +34,7 @@ def safe_number_input(number_type: type, lower_bound=None, upper_bound=None):
         except ValueError:
             print("Введите корректное значение")
     return user_input
+
 
 images = {
     'debian': 'debian.png',
@@ -84,7 +85,6 @@ if __name__ == '__main__':
         args = [factor]
 
     result = Image.fromarray(selected_operation(np.array(img), *args).astype(data_type), color_model)
-    # result.show()
 
     print('Введите название сохраненного изображения (оставьте пустым, чтобы не сохранять)')
     selected_path = input()
