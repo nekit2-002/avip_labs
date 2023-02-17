@@ -42,7 +42,7 @@ def execute(img, f1, f2, number_type=int):
     color_model = 'RGB'
 
     factor = safe_number_input(number_type, 0.5)
-    result = Image.fromarray(one_iteration_discretization(
+    result = Image.fromarray(one_step_resampling(
         img, factor, f1, f2).astype(data_type), color_model)
 
     return result
@@ -88,7 +88,7 @@ if __name__ == '__main__':
 
             args = [numerator, denominator]
             result = Image.fromarray(
-                two_iteration_discretization(img, *args).astype(np.uint8),
+                two_step_resampling(img, *args).astype(np.uint8),
                 'RGB')
 
         case 'one':

@@ -8,21 +8,22 @@ def image_to_np_array(image_name: str) -> np.array:
     return np.array(img_src)
 
 
-def two_iteration_discretization(img: np.array, numerator: int,
-                                 denominator: int) -> np.array:
-    tmp = one_iteration_discretization(img, numerator, lambda a, b: a * b,
-                                       lambda a, b: int(round(a / b)))
-    return one_iteration_discretization(tmp, denominator,
-                                        lambda a, b: int(round(a / b)),
-                                        lambda a, b: a * b)
+def two_step_resampling(img: np.array, numerator: int,
+                        denominator: int) -> np.array:
+    tmp = one_step_resampling(img, numerator, lambda a, b: a * b,
+                              lambda a, b: int(round(a / b)))
+    return one_step_resampling(tmp, denominator,
+                               lambda a, b: int(round(a / b)),
+                               lambda a, b: a * b)
 
 
-def one_iteration_discretization(img: np.array, factor: float, f1, f2):
+def one_step_resampling(img: np.array, factor: float, f1, f2):
     dimensions = img.shape[0:2]
     new_dimensions = tuple(f1(dimension, factor) for dimension in
                            dimensions)
     new_shape = (*new_dimensions, img.shape[2])
     new_img = np.empty(new_shape)
+
     for x in range(new_dimensions[0]):
         for y in range(new_dimensions[1]):
             new_img[x, y] = img[
