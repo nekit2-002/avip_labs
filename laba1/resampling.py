@@ -1,8 +1,8 @@
 from PIL import Image
 import numpy as np
-import sys
+from sys import path
 
-path = sys.path[0]
+path = path[0]
 
 def image_to_np_array(image_name: str) -> np.array:
     img_src = Image.open(path + '\\pictures_src\\' + image_name).convert('RGB')
@@ -35,4 +35,4 @@ def one_step_resampling(img: np.array, factor: float, f1, f2):
 
 
 if __name__ == '__main__':
-    print(sys.path)
+    print(path)
