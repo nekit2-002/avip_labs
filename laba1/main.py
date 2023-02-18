@@ -103,4 +103,4 @@ if __name__ == '__main__':
 не сохранять)')
     selected_path = input()
     if selected_path:
-        result.save(path.join('pictures_results', selected_path))
+        result.save(path + '\\pictures_results\\' + selected_path)
