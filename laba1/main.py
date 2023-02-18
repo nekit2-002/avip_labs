@@ -1,4 +1,5 @@
 from resampling import *
+from operator import mul
 
 
 def prompt(variants: dict):
@@ -71,13 +72,11 @@ if __name__ == '__main__':
     match selected_operation:
         case 'int':
             print('Введите целый коэффициент растяжения')
-            result = execute(img, lambda a, b: a * b,
-                             lambda a, b: int(round(a / b)))
+            result = execute(img, mul, lambda a, b: int(round(a / b)))
 
         case 'dec':
             print('Введите целый коэффициент сжатия')
-            result = execute(img, lambda a, b: int(round(a / b)),
-                             lambda a, b: a * b)
+            result = execute(img, lambda a, b: int(round(a / b)), mul)
 
         case 'two':
             print('Введите целый коэффициент растяжения')

@@ -23,7 +23,6 @@ def one_step_resampling(img: np.array, factor: float, f1, f2):
     new_dimensions = tuple(f1(dimension, factor) for dimension in
                            dimensions)
     new_shape = (*new_dimensions, img.shape[2])
-    print(new_shape)
     new_img = np.empty(new_shape)
 
     for x in range(new_dimensions[0]): # столбец
