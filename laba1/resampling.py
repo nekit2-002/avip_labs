@@ -16,8 +16,7 @@ def two_step_resampling(img: np.array, numerator: int,
     tmp = one_step_resampling(img, numerator, mul,
                               lambda a, b: floor(a / b))
     return one_step_resampling(tmp, denominator,
-                               lambda a, b: int(round(a / b)),
-                               mul)
+                               lambda a, b: int(round(a / b)), mul)
 
 
 def one_step_resampling(img: np.array, factor: float, f1, f2):
@@ -27,8 +26,8 @@ def one_step_resampling(img: np.array, factor: float, f1, f2):
     new_shape = (*new_dimensions, img.shape[2])
     new_img = np.empty(new_shape)
 
-    for x in range(new_dimensions[0] - 1): # столбец
-        for y in range(new_dimensions[1] - 1): # строка
+    for x in range(new_dimensions[0]): # столбец
+        for y in range(new_dimensions[1]): # строка
             new_img[x, y] = img[
                 f2(x, factor), 
                 f2(y, factor)

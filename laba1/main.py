@@ -72,7 +72,7 @@ if __name__ == '__main__':
     match selected_operation:
         case 'int':
             print('Введите целый коэффициент растяжения')
-            result = execute(img, mul, lambda a, b: int(round(a / b)))
+            result = execute(img, mul, lambda a, b: floor(a / b))
 
         case 'dec':
             print('Введите целый коэффициент сжатия')
@@ -93,7 +93,7 @@ if __name__ == '__main__':
         case 'one':
             print('Введите дробный коэффициент растяжения/сжатия')
             result = execute(img, lambda a, b: int(round(a * b)),
-                             lambda a, b: int(round(a / b)), float)
+                            lambda a, b: floor(a / b), float)
 
         case _:
             exit()
