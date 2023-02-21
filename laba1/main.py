@@ -1,5 +1,4 @@
 from resampling import *
-from operator import mul
 
 
 def prompt(variants: dict):

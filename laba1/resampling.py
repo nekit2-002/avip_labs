@@ -1,6 +1,8 @@
 from PIL import Image
 import numpy as np
 from sys import path
+from math import floor
+from operator import mul
 
 path = path[0]
 
@@ -11,11 +13,11 @@ def image_to_np_array(image_name: str) -> np.array:
 
 def two_step_resampling(img: np.array, numerator: int,
                         denominator: int) -> np.array:
-    tmp = one_step_resampling(img, numerator, lambda a, b: a * b,
-                              lambda a, b: int(round(a / b)))
+    tmp = one_step_resampling(img, numerator, mul,
+                              lambda a, b: floor(a / b))
     return one_step_resampling(tmp, denominator,
                                lambda a, b: int(round(a / b)),
-                               lambda a, b: a * b)
+                               mul)
 
 
 def one_step_resampling(img: np.array, factor: float, f1, f2):
