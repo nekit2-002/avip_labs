@@ -25,11 +25,11 @@ def one_step_resampling(img: np.array, factor: float, f1, f2):
     new_shape = (*new_dimensions, img.shape[2])
     new_img = np.empty(new_shape)
 
-    for x in range(new_dimensions[0]): # столбец
-        for y in range(new_dimensions[1]): # строка
+    for x in range(new_dimensions[0] - 1): # столбец
+        for y in range(new_dimensions[1] - 1): # строка
             new_img[x, y] = img[
-                min(f2(x, factor), dimensions[0] - 1),
-                min(f2(y, factor), dimensions[1] - 1)
+                f2(x, factor), 
+                f2(y, factor)
             ]
     return new_img
 
