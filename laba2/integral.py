@@ -27,26 +27,27 @@ def sum_in_frame(integral_img: np.array, x: int, y: int, frame_size: int):
     low = y + frame_size - 1
 
     D = integral_img[min(low, hight), min(right, len)]
-    if x <= 0 and y <= 0:
-        return D
-    
     C = integral_img[ min(low, hight), max(x - 1, 0)]
-    if min(right, len) == len and y == 0:
-        return D - C
-
     B = integral_img[max(0, y - 1), min(len, right)]
-    if min(low, hight) == hight and x == 0:
-        return D - B
-    
     intersection = integral_img[max(y - 1, 0), max(x - 1, 0)]
-    if min(low, hight) == hight and min(len, right) == len:
-        print(B, C, D)
-        D - C - B
+
+    if x == 0 and y == 0:
+        return D
+    elif x == 0:
+        return D - B
+    elif y == 0:
+        return D - C 
+    
+    # if min(right, len) == len:
+    #     return D - C - B + intersection
+    
+    # if min(low, hight) == hight:
+    #     return D - C - B + intersection
 
     return D - C - B + intersection
 
 if __name__ == '__main__':
-    a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])
     print(a)
     print(integral_image(a))
-    print(sum_in_frame(integral_image(a), 1, 1, 2))
+    print(sum_in_frame(integral_image(a), 1, 0, 3))
