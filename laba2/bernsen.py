@@ -35,7 +35,7 @@ def culculate_mean(integral_image: np.array, x: int, y: int, frame_size):
     return s // square
  
 
-def bernsen_threshold(image:np.array, frame_size: int, thres: int) -> np.array:
+def bernsen_threshold(image:np.array, frame_size: int=10, thres: int=15) -> np.array:
     if len(image.shape) == 3:
         image = semitone(image)
 
@@ -50,8 +50,18 @@ def bernsen_threshold(image:np.array, frame_size: int, thres: int) -> np.array:
                 res_img[x, y] = 0
                 continue
 
-            # print(mean)
-            res_img[x, y] = 0 if mean < thres else 255
+            p = image[x, y]
+            ratio = 100 * p / mean
+
+            if ratio < 100:
+                if (100 - ratio) > thres:
+                    res_img[x, y] = 0
+                else:
+                    res_img[x, y] = 255
+            else:
+                res_img[x, y] = 255
+
+
     return res_img
 
 if __name__ == '__main__':
