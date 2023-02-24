@@ -42,12 +42,15 @@ def bernsen_threshold(image:np.array, frame_size: int, thres: int) -> np.array:
     res_img = np.empty_like(image)
     integral_img = integral_image(image)
 
-    # print(integral_img.shape)
-
     for x in range(image.shape[0]): # СТРОКА
         for y in range(image.shape[1]): # СТОЛБЕЦ
-            print("Строка --", x, "из ",image.shape[0],  "Столбец --", y, "из ",image.shape[1])
+            # print("Строка --", x, "из ",image.shape[0],  "Столбец --", y, "из ",image.shape[1])
             mean = culculate_mean(integral_img, y, x, frame_size)
+            if mean == 0:
+                res_img[x, y] = 0
+                continue
+
+            # print(mean)
             res_img[x, y] = 0 if mean < thres else 255
     return res_img
 

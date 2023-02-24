@@ -1,4 +1,4 @@
-from bernsen import bernsen,size_t
+from bernsen import bernsen_threshold
 from semitone import to_semitone, image_to_np_array, path
 from semitone import Image, np
 
@@ -36,15 +36,18 @@ def safe_number_input(lower_bound=None, upper_bound=None):
 
 def run_bernsen(img_name):
     print("Введите размер окна:")
-    frame_size = safe_number_input(1, 5)
-    print("Введите процент доверия t:")
-    t = safe_number_input(15, 30)
+    frame_size = safe_number_input(3, 20)
+    print("Введите порог t:")
+    t = safe_number_input(0, 255)
 
-    return Image.fromarray(bernsen(img_name, frame_size, t).astype(np.uint8), "L")
+    return Image.fromarray(bernsen_threshold(img_name, frame_size, t).astype(np.uint8), "L")
 
 
 images = {
-    "House": 'house.png'
+    "House": 'house.png',
+    "Letters": 'greek.png',
+    "Face": 'nando.png',
+    "Chess": 'chess.png'
 }
 
 operations = {
