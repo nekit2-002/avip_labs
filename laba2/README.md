@@ -7,4 +7,4 @@
 ![](pictures_results/house_semitone.bmp)
 
 Бинаризованное изображение:
-![](pictures_results/house_semitone.bmp)
+![](pictures_results/house_bin.bmp)
