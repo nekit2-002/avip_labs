@@ -21,3 +21,16 @@
 Бинаризованное изображение(Размер окна == 10, процент порога t == 17):
 
 ![](pictures_results/chess_bin.bmp)
+
+## Кадр из аниме
+Оригинальное изображение:
+![](pictures_src/tsukyo.png)
+
+Полутоновое изображение:
+![](pictures_results/tsukyo_semitone.bmp)
+
+Бинаризованное изображение(Размер окна == 10, процент порога t == 15):
+![](pictures_results/tsukyo_dark_bin.bmp)
+
+Бинаризованное изображение(Размер окна == 7, процент порога t == 14):
+![](pictures_results/tsukyo_light_bin.bmp)
