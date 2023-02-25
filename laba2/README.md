@@ -11,10 +11,13 @@
 
 ## Фотография шахматной доски
 Оригинальное изображение:
+
 ![](pictures_src/chess.png)
 
 Полутоновое изображение:
+
 ![](pictures_results/chess_semitone.bmp)
 
 Бинаризованное изображение(Размер окна == 10, процент порога t == 17):
+
 ![](pictures_results/chess_bin.bmp)
