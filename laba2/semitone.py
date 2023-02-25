@@ -1,10 +1,12 @@
 from PIL import Image
 import numpy as np
-from os import path
+from sys import path
+
+path = path[0]
 
 
 def image_to_np_array(image_name: str) -> np.array:
-    img_src = Image.open(path.join('pictures_src', image_name)).convert('RGB')
+    img_src = Image.open(path + '\\pictures_src\\' + image_name).convert('RGB')
     return np.array(img_src)
 
 
@@ -25,4 +27,4 @@ if __name__ == '__main__':
 не сохранять)')
     selected_path = input()
     if selected_path:
-        result.save(path.join('pictures_results', selected_path))
+        result.save(path + '\\pictures_results\\' + selected_path)
