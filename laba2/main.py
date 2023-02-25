@@ -45,9 +45,10 @@ def run_bernsen(img_name):
 
 images = {
     "House": 'house.png',
-    "Letters": 'greek.png',
+    "Anime face": 'tsukyo.png',
     "Face": 'nando.png',
-    "Chess": 'chess.png'
+    "Chess": 'chess.png',
+    "Book": 'text.png'
 }
 
 operations = {
