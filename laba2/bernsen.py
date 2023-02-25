@@ -4,7 +4,6 @@ from semitone import np
 from integral import integral_image
 
 def sum_in_frame(integral_img: np.array, x: int, y: int, frame_size: int):
-    # print(integral_img.shape)
     len = integral_img.shape[1] - 1
     hight = integral_img.shape[0] - 1
 
@@ -19,7 +18,6 @@ def sum_in_frame(integral_img: np.array, x: int, y: int, frame_size: int):
     C = integral_img[min(hight, low), max(left, 0)]
     D = integral_img[min(hight, low), min(right, len)]
     
-    # print("Half frame", half_frame, "above", above, "low", low,"hight =", hight, "left", left, "right", right, "x =", x,"y =", y)
     if max(left + 1, 0) == 0 and max(above + 1, 0) == 0:
         return D
     elif max(left + 1, 0) == 0:
@@ -44,7 +42,6 @@ def bernsen_threshold(image:np.array, frame_size: int=10, thres: int=15) -> np.a
 
     for x in range(image.shape[0]): # СТРОКА
         for y in range(image.shape[1]): # СТОЛБЕЦ
-            # print("Строка --", x, "из ",image.shape[0],  "Столбец --", y, "из ",image.shape[1])
             mean = culculate_mean(integral_img, y, x, frame_size)
             if mean == 0:
                 res_img[x, y] = 0
@@ -67,8 +64,5 @@ def bernsen_threshold(image:np.array, frame_size: int=10, thres: int=15) -> np.a
 if __name__ == '__main__':
     a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12],])
     print(a)
-    # print(a[1, 2])
-    # print(a.shape)
     print(integral_image(a))
     print(sum_in_frame(integral_image(a), 1, 0, 3))
-    # print(culculate_mean(integral_image(a), 1, 0, 3))
