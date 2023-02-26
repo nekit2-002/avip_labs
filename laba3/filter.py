@@ -1,3 +1,4 @@
+# 1 + (6 - 1)%10 == 6 --> Rank filtration.
 import numpy as np
 
 
