@@ -25,9 +25,9 @@ if __name__ == '__main__':
     res_img = Image.fromarray(res_img, 'L')
     difference = Image.fromarray(difference, 'L')
 
-    difference.save(path.join('differential_pictures', selected_image))
+    difference.save(path + '\\differential_pictures\\' + selected_image)
     print('Введите название сохраненного изображения (оставьте пустым, чтобы \
 не сохранять)')
     selected_path = input()
     if selected_path:
-        res_img.save(path.join('pictures_results', selected_path))
+        res_img.save(path + '\\pictures_results\\' + selected_path)
