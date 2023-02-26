@@ -3,8 +3,9 @@ import numpy as np
 
 def apply_aperture(img, new_image, x, y, size, threshold):
     low = max(y - size // 2, 0)
+    above = min(y + size // 2 + 1, img.shape[0])
     
-    aperture = img[low : min(y + size // 2 + 1, img.shape[0]),
+    aperture = img[low : above,
                    max(x - size // 2, 0) : min(x + size // 2 + 1, img.shape[1])]
     
     ones = (aperture == 255).sum()
