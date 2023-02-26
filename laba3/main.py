@@ -5,6 +5,7 @@ from my_io import prompt, image_to_np_array, safe_number_input, path, Image
 images = {
     'Text': 'text_bin_light.bmp',
     'Face': 'face.bmp',
+    'House': 'house_bin.bmp',
     'Chess': 'chess_bin.bmp'
 }
 
