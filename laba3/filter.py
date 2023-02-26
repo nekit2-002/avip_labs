@@ -2,10 +2,12 @@ import numpy as np
 
 
 def apply_aperture(img, new_image, x, y, size, threshold):
-    left = max(y - size // 2, 0)
-    right = min(y + size // 2 + 1, img.shape[1])
-    low = max(x - size // 2, 0)
-    above = min(x + size // 2 + 1, img.shape[0])
+    size //= 2
+
+    left = max(y - size, 0)
+    right = min(y + size + 1, img.shape[1])
+    low = max(x - size, 0)
+    above = min(x + size + 1, img.shape[0])
     
     aperture = img[low : above, left : right]
     
