@@ -5,9 +5,10 @@ def apply_aperture(img, new_image, x, y, size, threshold):
     low = max(y - size // 2, 0)
     above = min(y + size // 2 + 1, img.shape[0])
     left = max(x - size // 2, 0)
+    right = min(x + size // 2 + 1, img.shape[1])
     
     aperture = img[low : above,
-                   left : min(x + size // 2 + 1, img.shape[1])]
+                   left : right]
     
     ones = (aperture == 255).sum()
 
