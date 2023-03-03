@@ -12,7 +12,8 @@ operations = {
 images = {
     'Chess': 'chess_semitone.bmp',
     'Anime face': 'tsukyo_semitone.bmp',
-    'House': 'house_semitone.bmp'
+    'House': 'house_semitone.bmp',
+    'Face': 'face_semitone.bmp'
 }
 
 if __name__ == '__main__':
