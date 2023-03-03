@@ -50,7 +50,7 @@ def apply_operator(frame: np.array, direction: Literal['x', 'y', 'g', 'b']):
 
 
 def sharr_operator(img: np.array, direction: Literal['x', 'y', 'g', 'b'],
-                   thres: int = 15, frame_size: int = 10):
+                   frame_size: int = 10, thres: int = 15):
     new_img = np.zeros_like(img, dtype=np.float64)
     x, y = 1, 1
 
