@@ -1,5 +1,5 @@
 # # 1 + (6 - 1)%10 == 6 --> Sharr operator
-from bernsen import np
+from my_io import np
 from bernsen import bernsen_threshold
 from typing import Literal
 
@@ -72,7 +72,7 @@ def sharr_operator(img: np.array, direction: Literal['x', 'y', 'g', 'b'],
     new_img = new_img / np.max(new_img) * 255
 
     if direction == 'b':
-        return bernsen_threshold(new_img, frame_size, thres)
+        return bernsen_threshold(new_img, frame_size, thres).astype(np.uint8)
 
     elif direction == 'x' or direction == 'y' or direction == 'g':
         return new_img.astype(np.uint8)
