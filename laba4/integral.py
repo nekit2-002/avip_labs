@@ -1,4 +1,5 @@
-from my_io import np 
+from my_io import np
+
 
 def integral_image(img: np.array) -> np.array:
     integral_img = np.zeros(shape=img.shape)

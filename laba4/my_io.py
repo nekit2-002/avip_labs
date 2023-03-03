@@ -39,5 +39,6 @@ def image_to_np_array(image_name: str) -> np.array:
     img_src = Image.open(path.join('pictures_src', image_name)).convert('L')
     return np.array(img_src)
 
+
 def image_from_np_array(image: np.array, f):
     return Image.fromarray(f(image), 'L')
