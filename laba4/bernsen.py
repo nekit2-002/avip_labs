@@ -63,5 +63,13 @@ def bernsen_threshold(image: np.array, frame_size: int = 10, thres: int = 15):
     return res_img
 
 
+def simple_bin(img: np.array, thres: int = 40):
+    res_img = np.empty_like(img)
+    for x in range(img.shape[0]):
+        for y in range(img.shape[1]):
+            res_img[x, y] = 255 if img[x, y] > thres else 0
+    return res_img
+
+
 if __name__ == '__main__':
     pass
