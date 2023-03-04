@@ -1,6 +1,8 @@
 from PIL import Image
 import numpy as np
-from os import path
+from sys import path
+
+path = path[0]
 
 
 def safe_number_input(lower_bound=None, upper_bound=None):
@@ -36,7 +38,7 @@ def prompt(variants: dict):
 
 
 def image_to_np_array(image_name: str) -> np.array:
-    img_src = Image.open(path.join('pictures_src', image_name)).convert('L')
+    img_src = Image.open(path + '\\pictures_src\\' + image_name).convert('L')
     return np.array(img_src)
 
 

@@ -1,6 +1,6 @@
 from my_io import *
 from contoir import sharr_operator
-from my_io import Image
+from my_io import Image, path
 
 operations = {
     'Градиентная матрица G_x': 'x',
@@ -30,4 +30,4 @@ if __name__ == '__main__':
 
     selected_path = input()
     if selected_path:
-        result.save(path.join('pictures_results', selected_path))
+        result.save(path + '\\pictures_results\\'+ selected_path)
