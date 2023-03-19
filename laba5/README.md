@@ -10,5 +10,8 @@
 
 Профили буквы:
 
-![](results/profiles/x/letter_02.png "Профиль по Х")
+<image
+  src="results/profiles/x/letter_02.png"
+  caption="Профиль по X">
+
 ![](results/profiles/y/letter_02.png "Профиль по Y")
