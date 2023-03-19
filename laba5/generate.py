@@ -4,7 +4,7 @@ from helpers import np, cut_white, calculate_profile
 from PIL import Image, ImageFont, ImageDraw
 from fontTools.ttLib import TTFont
 from binarization import simple_bin
-from itertools import product
+
 
 font_path = path.join('fonts', 'NotoSansOsmanya-Regular.ttf')
 font_size = 52
