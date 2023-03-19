@@ -84,9 +84,3 @@ if __name__ == '__main__':
             binarized_arr, _ = cut_white(binarized_arr, letter_profile, axis)
 
         save_arr_as_img(binarized_arr, filename(i))
-
-    # # Psili
-    # binarized_arr = font_drawer.render_binarized('´')
-    # # Delete white around letter
-    # binarized_arr = binarized_arr[10:46, 5:12]
-    # save_arr_as_img(binarized_arr, filename(len(osmanya) - 1))
