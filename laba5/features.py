@@ -67,7 +67,7 @@ class FeatureImage:
 
     def relative_weight_II(self) -> float:
         area = self.area() // 4
-        return self.weight_I() / area
+        return self.weight_II() / area
 
     def weight_III(self) -> int:
         hight = self.shape[0] // 2
@@ -78,7 +78,7 @@ class FeatureImage:
 
     def relative_weight_III(self) -> float:
         area = self.area() // 4
-        return self.weight_I() / area
+        return self.weight_III() / area
 
     def weight_IV(self) -> int:
         start = self.shape[0] // 2
