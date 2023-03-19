@@ -29,26 +29,24 @@ class FontDrawer:
         self.s = self.font.getGlyphSet()
         self.units_per_em = self.font['head'].unitsPerEm
 
-
     def render_text(self, text):
         img = Image.new(mode="RGB",
-                        size=(ceil(self.get_text_width(text, font_size)), font_size),
+                        size=(ceil(self.get_text_width(text, font_size)),
+                              font_size),
                         color="white")
-        
+
         draw = ImageDraw.Draw(img)
         draw.text((0, -5), text, (0, 0, 0), font=self.img_font)
-        
-        return img
 
+        return img
 
     def render_binarized(self, text, level=100):
         img = self.render_text(text)
         return 255 - simple_bin(np.array(img), level)
 
-
     def get_char_width(self, c, point_size):
         assert len(c) == 1
-        
+
         if ord(c) in self.t and self.t[ord(c)] in self.s:
             pts = self.s[self.t[ord(c)]].width
 
@@ -56,7 +54,6 @@ class FontDrawer:
             pts = self.s['.notdef'].width
 
         return pts * float(point_size) / self.units_per_em
-
 
     def get_text_width(self, text, point_size):
         total = 100

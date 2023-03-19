@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def calculate_profile(img: np.array, axis: int) -> np.array:
     return np.sum(img, axis=1 - axis)
 

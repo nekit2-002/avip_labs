@@ -45,7 +45,8 @@ if __name__ == '__main__':
     method_prefix = 'Image_Profiles'
 
     for i, letter in enumerate(osmanya):
-        img_src = Image.open(f'alphabet/direct/letter_{str(i + 1).zfill(2)}.png').convert('L')
+        img_src = Image.open(f'alphabet/direct/letter_{str(i + 1).zfill(2)}.png')
+        .convert('L')
         img_src_arr = np.array(img_src)
 
         img_src_arr[img_src_arr == 0] = 1
