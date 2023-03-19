@@ -9,5 +9,6 @@
 ![](alphabet/inverse/letter_02.png)
 
 Профили буквы:
-![Профиль по Х](results/profiles/x/letter_02.png)
-![Профиль по Y](results/profiles/y/letter_02.png)
+
+![](results/profiles/x/letter_02.png "Профиль по Х")
+![](results/profiles/y/letter_02.png "Профиль по Y")
