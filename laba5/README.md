@@ -4,9 +4,10 @@
 
 ## Символ 𐒁 (ba)
 Прямое и инвертированное сгенерированные изображения:
+
 ![](alphabet/direct/letter_02.png)
 ![](alphabet/inverse/letter_02.png)
 
 Профили буквы:
-![Профиль по Х](profiles/x/letter_02.png)
-![Профиль по Y](profiles/y/letter_02.png)
+![Профиль по Х](results/profiles/x/letter_02.png)
+![Профиль по Y](results/profiles/y/letter_02.png)
