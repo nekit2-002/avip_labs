@@ -12,3 +12,14 @@
 
 ![](results/profiles/x/letter_02.png "Профиль по Х")
 ![](results/profiles/y/letter_02.png "Профиль по Y")
+
+## Символ 𐒆 (deel)
+Прямое и инвертированное сгенерированные изображения:
+
+![](alphabet/direct/letter_07.png)
+![](alphabet/inverse/letter_07.png)
+
+Профили буквы:
+
+![](results/profiles/x/letter_07.png "Профиль по Х")
+![](results/profiles/y/letter_07.png "Профиль по Y")
