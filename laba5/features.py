@@ -1,10 +1,10 @@
 from generate import np, osmanya, filename
-from os import path
+from sys import path
 from PIL import Image
 import pandas as pd
 from functools import cache
 from itertools import product
-
+path = path[0]
 
 class FeatureImage:
     def __init__(self, img: Image, invert=True):
@@ -160,4 +160,4 @@ if __name__ == '__main__':
                                                    getattr(img, name)(axis),
                                                    feature_images.values()))
 
-    df.to_csv('results/features.csv', index=False)
+    df.to_csv(path + "\\results\\features.csv", index=False)

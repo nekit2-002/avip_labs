@@ -1,8 +1,9 @@
 import numpy as np
+from sys import path
 from matplotlib import pyplot as plt
 from PIL import Image
 from generate import osmanya
-
+path = path[0]
 
 def get_profiles(img):
     return {
@@ -37,7 +38,7 @@ def write_profile(img, iter, type='x'):
 
     plt.xlim(0, 55)
 
-    plt.savefig(f'results/profiles/{type}/letter_{str(iter + 1).zfill(2)}.png')
+    plt.savefig(path + "\\results\\profiles\\" + type + "\\letter_" + str(iter + 1).zfill(2) + ".png")
     plt.clf()
 
 
@@ -45,7 +46,7 @@ if __name__ == '__main__':
     method_prefix = 'Image_Profiles'
 
     for i, letter in enumerate(osmanya):
-        img_src = Image.open(f'alphabet/direct/letter_{str(i + 1).zfill(2)}.png').convert('L')
+        img_src = Image.open(path + "\\alphabet\\direct\\letter_" + str(i + 1).zfill(2) + ".png").convert('L')
         img_src_arr = np.array(img_src)
 
         img_src_arr[img_src_arr == 0] = 1

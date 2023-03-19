@@ -1,12 +1,12 @@
-from os import path
+from sys import path
 from math import ceil
 from helpers import np, cut_white, calculate_profile
 from PIL import Image, ImageFont, ImageDraw
 from fontTools.ttLib import TTFont
 from binarization import simple_bin
+path = path[0]
 
-
-font_path = path.join('fonts', 'NotoSansOsmanya-Regular.ttf')
+font_path = path + "\\fonts\\NotoSansOsmanya-Regular.ttf"
 font_size = 52
 osmanya = [
     '𐒀', '𐒁', '𐒂', '𐒃', '𐒄', '𐒅', '𐒆', '𐒇',
@@ -17,7 +17,7 @@ osmanya = [
 
 
 def filename(n):
-    return f"alphabet/direct/letter_{str(n + 1).zfill(2)}.png"
+    return path + "\\alphabet\\direct\\letter_" + str(n + 1).zfill(2) + ".png"
 
 
 class FontDrawer:
