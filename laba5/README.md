@@ -23,3 +23,14 @@
 
 ![](results/profiles/x/letter_07.png "Профиль по Х")
 ![](results/profiles/y/letter_07.png "Профиль по Y")
+
+## Символ 𐒎 (qaaf)
+Прямое и инвертированное сгенерированные изображения:
+
+![](alphabet/direct/letter_15.png)
+![](alphabet/inverse/letter_15.png)
+
+Профили буквы:
+
+![](results/profiles/x/letter_15.png "Профиль по Х")
+![](results/profiles/y/letter_15.png "Профиль по Y")
