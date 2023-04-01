@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from os import path
 from helpers import calculate_profile, image_to_np_array
 from PIL import Image, ImageDraw
+from PIL.ImageOps import invert
 
 def split_letters(img: np.array, profile: np.array):
     assert img.shape[1] == profile.shape[0]
@@ -10,27 +11,32 @@ def split_letters(img: np.array, profile: np.array):
     letter_borders = []
     letter_start = 0
     is_empty = True
+
     for i in range(img.shape[1]):
         if profile[i] == 0:
             if not is_empty:
                 is_empty = True
                 letters.append(img[:, letter_start:i+1])
                 letter_borders.append(i+1)
+
         else:
             if is_empty:
                 is_empty = False
                 letter_start = i
                 letter_borders.append(letter_start)
+
     letters.append(img[:, letter_start:img.shape[1] - 1])
-    print(letter_borders)
+
     return letters, letter_borders
 
 
 def bar(data, bins, axis):
     if axis == 1:
         plt.bar(x=bins, height=data)
+
     elif axis == 0:
         plt.barh(y=bins, width=data)
+
     else:
         raise ValueError('Invalid axis')
 
@@ -56,10 +62,15 @@ if __name__ == '__main__':
     rgb_img = Image.new("RGB", result_img.size)
     rgb_img.paste(result_img)
     draw = ImageDraw.Draw(rgb_img)
+    
     for border in letter_borders:
         draw.line((border, 0, border, img.shape[1]), fill='green')
+
     rgb_img.save(f"results/result.bmp")
 
     for i, letter in enumerate(img_letters):
         letter_img = Image.fromarray(letter.astype(np.uint8), 'L').convert('1')
+        letter_img.save(f"results/symbols_inversed/letter_{i}.bmp")
+
+        letter_img = invert(letter_img)
         letter_img.save(f"results/symbols/letter_{i}.bmp")

@@ -9,10 +9,13 @@ if __name__ == '__main__':
     util = FontDrawer()
     result = util.render_binarized(SENTENCE, 170)
 
+    initial = Image.fromarray(result,'L')
+    initial = invert(initial)
+    initial.save(f"results/initial_sentence_black.bmp")
+
     for axis in (0, 1):
         text_profile = calculate_profile(result, axis)
         result, _ = cut_black(result, text_profile, axis)
-
 
     string = Image.fromarray(result,'L')
     string.save(f"results/sentence_white.bmp")
