@@ -18,10 +18,10 @@
 
 ## Сегментация текста
 В исходном виде:
-![](results/initial_sentence_black.bmp)
+![](results/sentence_black.bmp)
 
 В инвертированном виде:
-![](results/initial_sentence_white.bmp)
+![](results/sentence_white.bmp)
 
 ## Сегментация символов
 Выделенные символы с границами:
