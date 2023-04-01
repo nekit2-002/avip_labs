@@ -1,6 +1,5 @@
-from math import ceil
-import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
+from PIL.ImageOps import invert
 from gen import FontDrawer
 from helpers import calculate_profile, cut_black
 
@@ -15,4 +14,8 @@ if __name__ == '__main__':
         result, _ = cut_black(result, text_profile, axis)
 
 
-    Image.fromarray(result,'L').save(f"results/sentence.bmp")
+    string = Image.fromarray(result,'L')
+    string.save(f"results/sentence_white.bmp")
+
+    string = invert(string)
+    string.save(f"results/sentence_black.bmp")
