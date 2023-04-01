@@ -35,7 +35,7 @@ class FontDrawer:
                         color="white")
 
         draw = ImageDraw.Draw(img)
-        draw.text((0, -5), text, (0, 0, 0), font=self.img_font)
+        draw.text((0, -10), text, (0, 0, 0), font=self.img_font)
 
         return img
 

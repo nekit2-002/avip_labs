@@ -10,6 +10,7 @@ if __name__ == '__main__':
     result = util.render_binarized(SENTENCE, 170)
 
     initial = Image.fromarray(result,'L')
+    initial.save(f"results/initial_sentence_white.bmp")
     initial = invert(initial)
     initial.save(f"results/initial_sentence_black.bmp")
 
