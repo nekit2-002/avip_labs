@@ -16,7 +16,7 @@ def split_letters(img: np.array, profile: np.array):
         if profile[i] == 0:
             if not is_empty:
                 is_empty = True
-                letters.append(img[:, letter_start:i+1])
+                letters.append(img[:, letter_start:i + 1])
                 letter_borders.append(i+1)
 
         else:
@@ -57,6 +57,7 @@ if __name__ == '__main__':
     plt.clf()
 
     img_letters, letter_borders = split_letters(img, profile_y)
+    print(letter_borders)
 
     result_img = Image.fromarray(img.astype(np.uint8), 'L')
     rgb_img = Image.new("RGB", result_img.size)
