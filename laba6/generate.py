@@ -7,6 +7,6 @@ SENTENCE = "𐒁𐒋𐒔𐒄𐒆𐒊 𐒇𐒘𐒝𐒏𐒆𐒎𐒓 𐒂𐒈𐒒�
 
 if __name__ == '__main__':
     util = FontDrawer()
-    result = util.render_binarized(SENTENCE)
+    result = util.render_binarized(SENTENCE, 200)
 
     Image.fromarray(result,'L').save(f"results/sentence.bmp")
