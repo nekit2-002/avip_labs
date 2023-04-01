@@ -1,7 +1,7 @@
 import numpy as np
 from PIL import Image
-from os import path
-
+from sys import path
+path = path[0]
 
 def calculate_profile(img: np.array, axis: int) -> np.array:
     return np.sum(img, axis=1 - axis)
@@ -18,5 +18,5 @@ def cut_black(img: np.array, profile: np.array, axis: int) -> np.array:
 
 
 def image_to_np_array(image_name: str) -> np.array:
-    img_src = Image.open(path.join('results', image_name)).convert('L')
+    img_src = Image.open(path + '\\results\\' + image_name).convert('L')
     return np.array(img_src)

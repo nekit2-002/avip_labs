@@ -1,9 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from os import path
+from sys import path
 from helpers import calculate_profile, image_to_np_array
 from PIL import Image, ImageDraw
 from PIL.ImageOps import invert
+path = path[0]
 
 def split_letters(img: np.array, profile: np.array):
     assert img.shape[1] == profile.shape[0]
@@ -49,11 +50,11 @@ if __name__ == '__main__':
     bins_y = np.arange(start=1, stop=img.shape[1] + 1).astype(int)
 
     bar(profile_x / 255, bins_x, 0)
-    plt.savefig(path.join('results', f'profile_x.png'))
+    plt.savefig(path + '\\results\\' + '\\profile_x.png')
     plt.clf()
 
     bar(profile_y / 255, bins_y, 1)
-    plt.savefig(path.join('results', f'profile_y.png'))
+    plt.savefig(path + '\\results\\' + 'profile_y.png')
     plt.clf()
 
     img_letters, letter_borders = split_letters(img, profile_y)
@@ -67,11 +68,11 @@ if __name__ == '__main__':
     for border in letter_borders:
         draw.line((border, 0, border, img.shape[1]), fill='green')
 
-    rgb_img.save(f"results/result.bmp")
+    rgb_img.save(path + "\\results\\result.bmp")
 
     for i, letter in enumerate(img_letters):
         letter_img = Image.fromarray(letter.astype(np.uint8), 'L').convert('1')
-        letter_img.save(f"results/symbols_inversed/letter_{i}.bmp")
+        letter_img.save(path + "\\results\\symbols_inversed\\letter_" + str(i) + ".bmp")
 
         letter_img = invert(letter_img)
-        letter_img.save(f"results/symbols/letter_{i}.bmp")
+        letter_img.save(path + "\\results\\symbols\\letter_" + str(i) + ".bmp")
