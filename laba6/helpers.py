@@ -5,7 +5,7 @@ def calculate_profile(img: np.array, axis: int) -> np.array:
     return np.sum(img, axis=1 - axis)
 
 
-def cut_white(img: np.array, profile: np.array, axis: int) -> np.array:
+def cut_black(img: np.array, profile: np.array, axis: int) -> np.array:
     start = profile.nonzero()[0][0]
     end = profile.nonzero()[0][-1] + 1
 

@@ -1,9 +1,8 @@
 from os import path
 from math import ceil
-from helpers import np, cut_white, calculate_profile
 from PIL import Image, ImageFont, ImageDraw
 from fontTools.ttLib import TTFont
-from binarization import simple_bin
+from binarization import simple_bin, np
 
 
 font_path = path.join('fonts', 'NotoSansOsmanya-Regular.ttf')
@@ -66,16 +65,3 @@ def save_arr_as_img(arr, file_name):
     binarized_letter = Image.fromarray(255 - arr, 'L')
     binarized_letter = binarized_letter.convert('1')
     binarized_letter.save(file_name)
-
-
-if __name__ == '__main__':
-    font_drawer = FontDrawer()
-    # letters that can merge
-    for i, letter in enumerate(osmanya):
-        binarized_arr = font_drawer.render_binarized(letter)
-        # Delete white around letter
-        for axis in (0, 1):
-            letter_profile = calculate_profile(binarized_arr, axis)
-            binarized_arr, _ = cut_white(binarized_arr, letter_profile, axis)
-
-        save_arr_as_img(binarized_arr, filename(i))
