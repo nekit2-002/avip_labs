@@ -5,7 +5,6 @@ import pandas as pd
 from functools import cache
 from itertools import product
 
-
 class FeatureImage:
     def __init__(self, img: Image, invert=True):
         if invert:
@@ -47,7 +46,8 @@ class FeatureImage:
         return self.shape[0] * self.shape[1]
 
     def relative_weight(self) -> float:
-        print("Weight = ",self.weight())
+        # print(self.weight())
+        # print(self.shape)
         return self.weight() / self.area()
 
     def weight_I(self) -> int:
@@ -127,7 +127,13 @@ class FeatureImage:
 
     def relative_inertia(self, axis):
         return self.inertia(axis) / self.weight() ** 2
+    
+    def profile(self, axis):
+        return np.sum(self.img, axis=1 - axis), np.arange(start=1, stop=self.shape[axis] + 1).astype(int)
 
+    def profile_norm(self, axis):
+        return np.sum(self.img, axis=1 - axis) / self.shape[1 - axis]
+    
 
 def axis_name(axis):
     return 'y' * (1 - axis) + 'x' * axis
