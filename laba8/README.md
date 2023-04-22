@@ -35,3 +35,36 @@ LUN: 77513.24652186273
 CON (contrasted): 10628404917.52531
 
 LUN (contrasted): 40407.39082644542
+
+
+##  Изображение узора с обоев
+### Исходное:
+
+![](src/oboi.png)
+
+### Полутоновое:
+
+![](results/semitone/oboi.png)
+
+### Матрица Халарика
+
+![](results/haralik/oboi.png)
+
+### Признаки
+CON: 18512023137.52082
+
+LUN: 39902.956713681466
+
+### Гистограммы
+![](results/histograms/oboi.png)
+
+### Констрастированное изображение
+![](results/contrasted/oboi.png)
+
+### Матрица Халарика для контрастированного изображения
+![](results/haralik_contrasted/oboi.png)
+
+### Контрастированные признаки
+CON (contrasted): 1882853324.08779
+
+LUN (contrasted): 15910.17468639537
