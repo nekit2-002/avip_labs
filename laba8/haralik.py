@@ -1,5 +1,5 @@
 import numpy as np
-
+from numpy import log
 
 def haralik(img_arr: np.array, d = 2):
     matrix = np.zeros(shape=(256, 256))
@@ -11,6 +11,10 @@ def haralik(img_arr: np.array, d = 2):
             matrix[img_arr[x, y - d], img_arr[x, y]] += 1
             matrix[img_arr[x, y + d], img_arr[x, y]] += 1
 
+    for x in range(256):
+        m = np.array(matrix[x])
+        m[np.where(m == 0)] = 1
+        matrix[x] = log(m)
     matrix = matrix * 256 / np.max(matrix)
     return matrix
 
