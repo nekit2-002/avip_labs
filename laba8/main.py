@@ -1,9 +1,9 @@
-from my_io import prompt, image_to_np_array
+from my_io import prompt
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 from os import path
-from semitone import semitone, to_semitone
+from semitone import to_semitone
 from haralik import haralik, CON, LUN
 from contrast import contrast
 
@@ -28,6 +28,7 @@ if __name__ == '__main__':
     figure, axis = plt.subplots(2, 1)
     axis[0].hist(x=semi.flatten(), bins=np.arange(0, 255))
     axis[0].title.set_text('Исходное изображение')
+
     axis[1].hist(x=transformed.flatten(), bins=np.arange(0, 255))
     axis[1].title.set_text('Преобразованное изображение')
     plt.tight_layout()
