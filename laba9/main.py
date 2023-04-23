@@ -12,7 +12,7 @@ def spectrogram_plot(samples, sample_rate):
 
 
 def denoise(samples, sample_rate, cutoff_freuency, passes=1):
-    z = signal.savgol_filter(samples, 200, 3)
+    z = signal.savgol_filter(samples, 100, 3)
     # Get parameters for filter function
     b, a = signal.butter(3, cutoff_freuency / sample_rate)
     # Lowpass filter
