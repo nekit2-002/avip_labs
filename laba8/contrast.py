@@ -9,8 +9,8 @@ def contrast(img:np.array):
     positiveRange = max(2, max(flat_img) - mn)
     negativeRange = max(2, mn - min(flat_img))
     
-    positiveAlpha = 2 ** (floor(log2(mn))) / log(positiveRange)
-    negativeAlpha = 2 ** (floor(log2(mn))) / log(negativeRange)
+    positiveAlpha = 2 ** 7/ log(positiveRange)
+    negativeAlpha = 2 ** 7/ log(negativeRange)
 
     res_img = np.zeros_like(img)
 
