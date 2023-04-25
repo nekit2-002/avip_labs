@@ -32,9 +32,9 @@ LUN: 22444.24735257008
 ![](results/haralik_contrasted/kirp.png)
 
 ### Контрастированные признаки
-CON (contrasted): 10628404917.52531
+CON (contrasted): 113983514.39752823
 
-LUN (contrasted): 40407.39082644542
+LUN (contrasted): 2160.9824011652677
 
 
 ##  Изображение узора с обоев
