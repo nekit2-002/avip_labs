@@ -51,9 +51,9 @@ LUN (contrasted): 2160.9824011652677
 ![](results/haralik/oboi.png)
 
 ### Признаки
-CON: 18512023137.52082
+CON: 3981144.1149413614
 
-LUN: 39902.956713681466
+LUN: 498.51908649458375
 
 ### Гистограммы
 ![](results/histograms/oboi.png)
@@ -65,10 +65,9 @@ LUN: 39902.956713681466
 ![](results/haralik_contrasted/oboi.png)
 
 ### Контрастированные признаки
-CON (contrasted): 1882853324.08779
+CON (contrasted): 8137120.671267983
 
-LUN (contrasted): 15910.17468639537
-
+LUN (contrasted): 408.7027770180322
 ##  Изображение поверхности Солнца
 ### Исходное:
 
