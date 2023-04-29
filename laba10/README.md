@@ -7,3 +7,7 @@
 
 ## Спектрограмма записи звука "А" по наростающей
 ![](results/denoised/denoised_a.png)
+
+
+## Спектрограмма записи звука "И" по наростающей
+![](results/denoised/denoised_i.png)
