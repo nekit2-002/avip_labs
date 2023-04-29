@@ -52,9 +52,21 @@ if __name__ == '__main__':
     garmonic1_ys = [1000, 1050, 1070, 1200]
     plt.plot(garmonic1_xs,garmonic1_ys, 'o--g', label = "Гармоники", lw = 0.5, ms=2)
     
-    garmonic2_xs = [ 2.1,  2.25,  2.35,  2.45,  2.5]
-    garmonic2_ys = [1100,  1450, 1570, 1640, 1700]
+    garmonic2_xs = [ 2.4,  2.5]
+    garmonic2_ys = [2700, 3000]
     plt.plot(garmonic2_xs,garmonic2_ys, 'o--g', lw = 0.5, ms=2)
+    
+    garmonic3_xs = [2.25, 2.28,  2.4,  2.5]
+    garmonic3_ys = [2700, 3000, 3700,4000]
+    plt.plot(garmonic3_xs,garmonic3_ys, 'o--g', lw = 0.5, ms=2)
+
+    garmonic3_xs = [2.1, 2.25,  2.4,  2.5]
+    garmonic3_ys = [1200, 1500, 1600,1700]
+    plt.plot(garmonic3_xs,garmonic3_ys, 'o--g', lw = 0.5, ms=2)
+
+    garmonic4_xs = [2.25, 2.28,  2.4,  2.5]
+    garmonic4_ys = [2700, 3000, 3700,4000]
+    plt.plot(garmonic4_xs,garmonic4_ys, 'o--g', lw = 0.5, ms=2)
     
     plt.legend()
     plt.savefig('results/denoised/denoised_a.png', dpi = dpi)
