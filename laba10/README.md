@@ -8,6 +8,11 @@
 ## Спектрограмма записи звука "А" по наростающей
 ![](results/denoised/denoised_a.png)
 
+### Анализ
+
 
 ## Спектрограмма записи звука "И" по наростающей
 ![](results/denoised/denoised_i.png)
+
+## Спектрограмма записи лая
+![](results/denoised/denoised_gav.png)
