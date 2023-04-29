@@ -36,7 +36,13 @@ if __name__ == '__main__':
     plt.clf()
 
     denoised = denoise(samples, sample_rate, cutoff_freuency = 4000)
-    spectrogram_plot(denoised, sample_rate, 7000)
+    spectrogram_plot(denoised, sample_rate, 6000)
+    plt.axhline(y = 300, color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
+    plt.axhline(y = 750, color = 'r', linestyle = '-', lw= 0.5)
+    plt.axhline(y = 1200, color = 'r', linestyle = '-', lw= 0.5)
+    plt.axhline(y = 2600, color = 'r', linestyle = '-', lw= 0.5)
+    plt.axhline(y = 3100, color = 'r', linestyle = '-', lw= 0.5)
+    plt.legend(bbox_to_anchor = (1.0, 1), loc = 'upper right')
     plt.savefig('results/denoised/denoised_a.png', dpi = dpi)
     plt.clf()
 
@@ -52,7 +58,12 @@ if __name__ == '__main__':
     plt.clf()
 
     denoised = denoise(samples, sample_rate, cutoff_freuency = 4000)
-    spectrogram_plot(denoised, sample_rate, 7000)
+    spectrogram_plot(denoised, sample_rate, 6000)
+    plt.axhline(y = 250, color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
+    plt.axhline(y = 2000, color = 'r', linestyle = '-', lw= 0.5)
+    plt.axhline(y = 2800, color = 'r', linestyle = '-', lw= 0.5)
+    plt.axhline(y = 3300, color = 'r', linestyle = '-', lw= 0.5)
+    plt.legend(bbox_to_anchor = (1.0, 1), loc = 'upper right')
     plt.savefig('results/denoised/denoised_i.png', dpi = dpi)
     plt.clf()
 
@@ -67,8 +78,12 @@ if __name__ == '__main__':
     plt.clf()
 
     denoised = denoise(samples, sample_rate, cutoff_freuency = 4000, passes = 2)
-    spectrogram_plot(denoised, sample_rate, 7000)
-    # print("For \"Gav\" min frequency is", mn,", and max is", mx)
+    spectrogram_plot(denoised, sample_rate, 6000)
+    plt.axhline(y = 300, color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
+    plt.axhline(y = 600, color = 'r', linestyle = '-', lw= 0.5)
+    plt.axhline(y = 1000, color = 'r', linestyle = '-', lw= 0.5)
+    plt.axhline(y = 2300, color = 'r', linestyle = '-', lw= 0.5)
+    plt.legend(bbox_to_anchor = (1.0, 1), loc = 'upper right')
     plt.savefig('results/denoised/denoised_gav.png', dpi = dpi)
     plt.clf()
 
