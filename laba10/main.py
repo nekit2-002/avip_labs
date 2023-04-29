@@ -46,6 +46,7 @@ if __name__ == '__main__':
     main_tone_xs = [0.2, 0.4, 0.6, 0.75, 0.9, 1.1, 1.2, 1.3, 1.6, 1.8,  2, 2.25, 2.5]
     main_tone_ys = [253, 253, 253,  253, 253, 253, 253, 260, 280, 300, 410, 490, 520]
     plt.plot(main_tone_xs, main_tone_ys, 'o-b', label = "Основной тон", lw = 0.5, ms=2)
+    print(np.mean(main_tone_ys))
     
     garmonic1_xs = [ 2.25,  2.3,  2.4,  2.5]
     garmonic1_ys = [1000, 1050, 1070, 1200]
@@ -80,6 +81,7 @@ if __name__ == '__main__':
     main_tone_xs = [0.3, 0.5, 0.6, 0.75, 0.9, 1.1, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8, 1.9]
     main_tone_ys = [253, 253, 253,  253, 260, 265, 300, 450, 550, 580, 600, 630, 640]
     plt.plot(main_tone_xs, main_tone_ys, 'o-b', label = "Основной тон", lw = 0.5, ms=2)
+    print(np.mean(main_tone_ys))
     
     garmonic1_xs = [ 1.3,  1.6,  1.7,  1.8,  1.9]
     garmonic1_ys = [1300, 1640, 1670, 1800, 1930]
