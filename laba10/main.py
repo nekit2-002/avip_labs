@@ -42,6 +42,19 @@ if __name__ == '__main__':
     plt.axhline(y = 1200, color = 'r', linestyle = '-', lw= 0.5)
     plt.axhline(y = 2600, color = 'r', linestyle = '-', lw= 0.5)
     plt.axhline(y = 3100, color = 'r', linestyle = '-', lw= 0.5)
+    
+    main_tone_xs = [0.2, 0.4, 0.6, 0.75, 0.9, 1.1, 1.2, 1.3, 1.6, 1.8,  2, 2.25, 2.5]
+    main_tone_ys = [253, 253, 253,  253, 253, 253, 253, 260, 280, 300, 410, 490, 520]
+    plt.plot(main_tone_xs, main_tone_ys, 'o-b', label = "Основной тон", lw = 0.5, ms=2)
+    
+    garmonic1_xs = [ 2.25,  2.3,  2.4,  2.5]
+    garmonic1_ys = [1000, 1050, 1070, 1200]
+    plt.plot(garmonic1_xs,garmonic1_ys, 'o--g', label = "Гармоники", lw = 0.5, ms=2)
+    
+    garmonic2_xs = [ 2.1,  2.25,  2.35,  2.45,  2.5]
+    garmonic2_ys = [1100,  1450, 1570, 1640, 1700]
+    plt.plot(garmonic2_xs,garmonic2_ys, 'o--g', lw = 0.5, ms=2)
+    
     plt.legend()
     plt.savefig('results/denoised/denoised_a.png', dpi = dpi)
     plt.clf()
