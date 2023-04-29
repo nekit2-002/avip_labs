@@ -38,11 +38,11 @@ if __name__ == '__main__':
     denoised = denoise(samples, sample_rate, cutoff_freuency = 4000)
     spectrogram_plot(denoised, sample_rate, 6000)
     plt.axhline(y = 300, color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
-    plt.axhline(y = 750, color = 'r', linestyle = '-', lw= 0.5)
+    plt.axhline(y = 740, color = 'r', linestyle = '-', lw= 0.5)
     plt.axhline(y = 1200, color = 'r', linestyle = '-', lw= 0.5)
     plt.axhline(y = 2600, color = 'r', linestyle = '-', lw= 0.5)
     plt.axhline(y = 3100, color = 'r', linestyle = '-', lw= 0.5)
-    plt.legend(bbox_to_anchor = (1.0, 1), loc = 'upper right')
+    plt.legend()
     plt.savefig('results/denoised/denoised_a.png', dpi = dpi)
     plt.clf()
 
@@ -63,7 +63,24 @@ if __name__ == '__main__':
     plt.axhline(y = 2000, color = 'r', linestyle = '-', lw= 0.5)
     plt.axhline(y = 2800, color = 'r', linestyle = '-', lw= 0.5)
     plt.axhline(y = 3300, color = 'r', linestyle = '-', lw= 0.5)
-    plt.legend(bbox_to_anchor = (1.0, 1), loc = 'upper right')
+    
+    main_tone_xs = [0.3, 0.5, 0.6, 0.75, 0.9, 1.1, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8, 1.9]
+    main_tone_ys = [253, 253, 253,  253, 260, 265, 300, 450, 550, 580, 600, 630, 640]
+    plt.plot(main_tone_xs, main_tone_ys, 'o-b', label = "Основной тон", lw = 0.5, ms=2)
+    
+    garmonic1_xs = [ 1.3,  1.6,  1.7,  1.8,  1.9]
+    garmonic1_ys = [1300, 1640, 1670, 1800, 1930]
+    plt.plot(garmonic1_xs,garmonic1_ys, 'o--g', label = "Гармоники", lw = 0.5, ms=2)
+
+    garmonic2_xs = [ 1.4,  1.55,  1.7,  1.8,  1.9]
+    garmonic2_ys = [2200,  2500, 2650, 2900, 3100]
+    plt.plot(garmonic2_xs,garmonic2_ys, 'o--g', lw = 0.5, ms=2)
+    
+    garmonic3_xs = [ 1.45,  1.51,  1.67, 1.74,  1.9]
+    garmonic3_ys = [ 2800,  3000, 3300, 3470, 3750]
+    plt.plot(garmonic3_xs,garmonic3_ys, 'o--g', lw = 0.5, ms=2)
+    
+    plt.legend()
     plt.savefig('results/denoised/denoised_i.png', dpi = dpi)
     plt.clf()
 
@@ -83,7 +100,7 @@ if __name__ == '__main__':
     plt.axhline(y = 600, color = 'r', linestyle = '-', lw= 0.5)
     plt.axhline(y = 1000, color = 'r', linestyle = '-', lw= 0.5)
     plt.axhline(y = 2300, color = 'r', linestyle = '-', lw= 0.5)
-    plt.legend(bbox_to_anchor = (1.0, 1), loc = 'upper right')
+    plt.legend()
     plt.savefig('results/denoised/denoised_gav.png', dpi = dpi)
     plt.clf()
 
