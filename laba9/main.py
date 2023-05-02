@@ -24,7 +24,7 @@ def denoise(samples, sample_rate, cutoff_freuency, passes=1):
 
 
 def to_pcm(y):
-    return np.int16(y / np.max(np.abs(y)) * 30000)
+    return np.int16(y / np.max(np.abs(y)) * 32000)
 
 if __name__ == '__main__':
     dpi = 500
@@ -36,18 +36,18 @@ if __name__ == '__main__':
     plt.savefig('results/spectrogram.png', dpi = dpi)
     plt.clf()
 
-    denoised_0 = denoise(samples, sample_rate, cutoff_freuency = 2500, passes = 0)
+    denoised_0 = denoise(samples, sample_rate, cutoff_freuency = 3000, passes = 0)
     spectrogram_plot(denoised_0, sample_rate, 20000)
     plt.savefig('results/denoised_spectrogram_savgol.png', dpi = dpi)
     plt.clf()
 
-    denoised = denoise(samples, sample_rate, cutoff_freuency = 2500)
+    denoised = denoise(samples, sample_rate, cutoff_freuency = 3000)
     spectrogram_plot(denoised, sample_rate)
-    plt.savefig('results/denoised_spectrogram_once.png', dpi=dpi)
+    plt.savefig('results/denoised_spectrogram_once.png', dpi = dpi)
     plt.clf()
 
     wavfile.write('results/denoised_once.wav', sample_rate, to_pcm(denoised))
-    denoised_2 = denoise(samples, sample_rate, cutoff_freuency = 2500, passes = 2)
+    denoised_2 = denoise(samples, sample_rate, cutoff_freuency = 3000, passes = 2)
     spectrogram_plot(denoised_2, sample_rate)
     plt.savefig('results/denoised_spectrogram_twice.png', dpi = dpi)
     plt.clf()
