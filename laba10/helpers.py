@@ -50,17 +50,55 @@ def culculate_mean(integral_image: np.array, x: int, y: int, frame_size):
     s = sum_in_frame(integral_image, x, y, frame_size)
     return s // square
 
-def changeSampleRate(path, NEW_SAMPLERATE = 20000):
+def changeSampleRate(path, new_sample_rate = 22050):
     audioPath = "src/" + path
     old_samplerate, old_audio = wavfile.read(audioPath)
 
-    if old_samplerate != NEW_SAMPLERATE:
+    if old_samplerate != new_sample_rate:
         duration = old_audio.shape[0] / old_samplerate
 
         time_old = np.linspace(0, duration, old_audio.shape[0])
-        time_new = np.linspace(0, duration, int(old_audio.shape[0] * NEW_SAMPLERATE / old_samplerate))
+        time_new = np.linspace(0, duration, int(old_audio.shape[0] * new_sample_rate / old_samplerate))
 
         interpolator = interpolate.interp1d(time_old, old_audio.T)
         new_audio = interpolator(time_new).T
 
-        wavfile.write("results/wavs/" + path, NEW_SAMPLERATE, np.round(new_audio).astype(old_audio.dtype))
+        wavfile.write("results/wavs/" + path, new_sample_rate, np.round(new_audio).astype(old_audio.dtype))
+
+def find_formants(freqs, integral_spec, x, frame_size):
+    res = [0] * integral_spec.shape[0]
+
+    for i in range(1, integral_spec.shape[0], 3):
+        res[i] = culculate_mean(integral_spec, x, i, frame_size)
+
+    origin = res.copy()
+    res.sort()
+
+    res = res[-3:]
+
+    return list(map(lambda power: (int(freqs[origin.index(power)]), int(power)), res))
+
+def find_all_formants(freqs, integral_spec, frame_size):
+    res = set()
+    for i in range(integral_spec.shape[1]):
+        formant = find_formants(freqs, integral_spec, i, frame_size)
+        form = list(map(lambda bind: bind[0], formant))
+        for j in range (3):
+            res.add(form[j])
+
+    res.discard(0)
+    return res
+
+def power(freqs, integral_spec, frame_size, formant_s):
+    power = dict()
+    for i in formant_s:
+        power[i] = 0
+
+    for i in range(integral_spec.shape[1]):
+        for j in find_formants(freqs, integral_spec, i, frame_size):
+            if (j[0] != 0):
+                power[j[0]] += j[1]
+
+    return power
+
+        
