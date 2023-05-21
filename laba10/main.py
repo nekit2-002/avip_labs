@@ -22,7 +22,8 @@ if __name__ == '__main__':
 
    dpi = 500
    spectogram_a, frequencies_a = spectrogram_plot(samples_a, sample_rate_a, 11000)
-   plt.axhline(y = 602,  color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
+   plt.axhline(y = 344,  color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
+   plt.axhline(y = 602,  color = 'r', linestyle = '-', lw= 0.5)
    plt.axhline(y = 861,  color = 'r', linestyle = '-', lw= 0.5)
    plt.axhline(y = 1119,  color = 'r', linestyle = '-', lw= 0.5)
    plt.legend()
@@ -34,7 +35,8 @@ if __name__ == '__main__':
    spectogram_i, frequencies_i = spectrogram_plot(samples_i, sample_rate_i, 11000)
    plt.axhline(y = 344,  color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
    plt.axhline(y = 602,  color = 'r', linestyle = '-', lw= 0.5)
-   plt.axhline(y = 1894,  color = 'r', linestyle = '-', lw= 0.5)
+   plt.axhline(y = 86,  color = 'r', linestyle = '-', lw= 0.5)
+   plt.axhline(y = 2928,  color = 'r', linestyle = '-', lw= 0.5)
    plt.legend()
    plt.savefig('results/spectrogram_i.png', dpi = dpi)
    plt.clf()
@@ -45,6 +47,7 @@ if __name__ == '__main__':
    plt.axhline(y = 344,  color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
    plt.axhline(y = 602,  color = 'r', linestyle = '-', lw= 0.5)
    plt.axhline(y = 861,  color = 'r', linestyle = '-', lw= 0.5)
+   plt.axhline(y = 86,  color = 'r', linestyle = '-', lw= 0.5)
    plt.legend()
    plt.savefig('results/spectrogram_gav.png', dpi = dpi)
    plt.clf()
@@ -60,36 +63,33 @@ if __name__ == '__main__':
    print("Тембрально окрашенный тон для звука А: " + str(formants_a[0]))
 
    power_a = power(frequencies_a, spec_a, 3, formants_a)
-   print(sorted(power_a.values()))
    print(sorted(power_a.items(), key = lambda item: item[1], reverse=True))
-   print("Три самые сильные форманты: " + str(sorted(power_a, key=lambda i: power_a[i])[-3:]))
+   print("Четыре самые сильные форманты: " + str(sorted(power_a, key=lambda i: power_a[i])[-4:]))
 
    spec_i = integral_image(spectogram_i)
    
-   formants_i = list(find_all_formants(frequencies_i, spec_i, 1))
+   formants_i = list(find_all_formants(frequencies_i, spec_i, 3))
    formants_i.sort()
 
-   print("Минимальная частота для звука И: " + str(formants_i[0]))
+   print("\n\nМинимальная частота для звука И: " + str(formants_i[0]))
    print("Максимальная частота для звука И: " + str(formants_i[-1]))
 
    print("Тембрально окрашенный тон для звука И: " + str(formants_i[0]))
 
-   power_i = power(frequencies_i, spec_i, 1, formants_i)
-   print(sorted(power_i.values()))
+   power_i = power(frequencies_i, spec_i, 3, formants_i)
    print(sorted(power_i.items(), key = lambda item: item[1], reverse=True))
-   print("Три самые сильные форманты: " + str(sorted(power_i, key=lambda i: power_i[i])[-3:]))
+   print("Четыре самые сильные форманты: " + str(sorted(power_i, key=lambda i: power_i[i])[-4:]))
 
    spec_gav = integral_image(spectogram_gav)
    
    formants_gav = list(find_all_formants(frequencies_gav, spec_gav, 5))
    formants_gav.sort()
 
-   print("Минимальная частота для звука ГАВ: " + str(formants_gav[0]))
+   print("\n\nМинимальная частота для звука ГАВ: " + str(formants_gav[0]))
    print("Максимальная частота для звука ГАВ: " + str(formants_gav[-1]))
 
    print("Тембрально окрашенный тон для звука ГАВ: " + str(formants_gav[0]))
 
    power_gav = power(frequencies_gav, spec_gav, 5, formants_gav)
-   print(sorted(power_gav.values()))
    print(sorted(power_gav.items(), key = lambda item: item[1], reverse=True))
-   print("Три самые сильные форманты: " + str(sorted(power_gav, key=lambda i: power_gav[i])[-3:]))
+   print("Четыре самые сильные форманты: " + str(sorted(power_gav, key=lambda i: power_gav[i])[-4:]))
