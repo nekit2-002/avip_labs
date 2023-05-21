@@ -68,7 +68,7 @@ def change_sample_rate(path, new_sample_rate = 22050):
 def find_formants(freqs, integral_spec, x, frame_size):
     res = [0] * integral_spec.shape[0]
 
-    for i in range(1, integral_spec.shape[0], 3):
+    for i in range(1, integral_spec.shape[0], frame_size):
         res[i] = culculate_mean(integral_spec, x, i, frame_size)
 
     origin = res.copy()
