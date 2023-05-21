@@ -17,7 +17,7 @@ def spectrogram_plot(samples, sample_rate,t = 11000):
     return my_spectrogram, frequencies
 
 if __name__ == '__main__':
-   changeSampleRate("voice_a.wav")
+   change_sample_rate("voice_a.wav")
    sample_rate_a , samples_a = wavfile.read("results/wavs/voice_a.wav")
 
    dpi = 500
@@ -29,7 +29,7 @@ if __name__ == '__main__':
    plt.savefig('results/spectrogram_a.png', dpi = dpi)
    plt.clf()
 
-   changeSampleRate("voice_i.wav")
+   change_sample_rate("voice_i.wav")
    sample_rate_i , samples_i = wavfile.read("results/wavs/voice_i.wav")
    spectogram_i, frequencies_i = spectrogram_plot(samples_i, sample_rate_i, 11000)
    plt.axhline(y = 344,  color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
@@ -39,12 +39,12 @@ if __name__ == '__main__':
    plt.savefig('results/spectrogram_i.png', dpi = dpi)
    plt.clf()
 
-   changeSampleRate("voice_gav.wav")
+   change_sample_rate("voice_gav.wav")
    sample_rate_gav , samples_gav = wavfile.read("results/wavs/voice_gav.wav")
    spectogram_gav, frequencies_gav = spectrogram_plot(samples_gav, sample_rate_gav, 11000)
    plt.axhline(y = 344,  color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
    plt.axhline(y = 602,  color = 'r', linestyle = '-', lw= 0.5)
-   plt.axhline(y = 1119,  color = 'r', linestyle = '-', lw= 0.5)
+   plt.axhline(y = 861,  color = 'r', linestyle = '-', lw= 0.5)
    plt.legend()
    plt.savefig('results/spectrogram_gav.png', dpi = dpi)
    plt.clf()
@@ -81,7 +81,7 @@ if __name__ == '__main__':
 
    spec_gav = integral_image(spectogram_gav)
    
-   formants_gav = list(find_all_formants(frequencies_gav, spec_gav, 1))
+   formants_gav = list(find_all_formants(frequencies_gav, spec_gav, 5))
    formants_gav.sort()
 
    print("Минимальная частота для звука ГАВ: " + str(formants_gav[0]))
@@ -89,7 +89,7 @@ if __name__ == '__main__':
 
    print("Тембрально окрашенный тон для звука ГАВ: " + str(formants_gav[0]))
 
-   power_gav = power(frequencies_gav, spec_gav, 1, formants_gav)
-   print(sorted(power_a.values()))
-   print(sorted(power_a.items(), key = lambda item: item[1], reverse=True))
+   power_gav = power(frequencies_gav, spec_gav, 5, formants_gav)
+   print(sorted(power_gav.values()))
+   print(sorted(power_gav.items(), key = lambda item: item[1], reverse=True))
    print("Три самые сильные форманты: " + str(sorted(power_gav, key=lambda i: power_gav[i])[-3:]))

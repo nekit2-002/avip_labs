@@ -50,7 +50,7 @@ def culculate_mean(integral_image: np.array, x: int, y: int, frame_size):
     s = sum_in_frame(integral_image, x, y, frame_size)
     return s // square
 
-def changeSampleRate(path, new_sample_rate = 22050):
+def change_sample_rate(path, new_sample_rate = 22050):
     audioPath = "src/" + path
     old_samplerate, old_audio = wavfile.read(audioPath)
 
