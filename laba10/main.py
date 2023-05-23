@@ -44,11 +44,6 @@ if __name__ == '__main__':
    change_sample_rate("voice_gav.wav")
    sample_rate_gav , samples_gav = wavfile.read("results/wavs/voice_gav.wav")
    spectogram_gav, frequencies_gav = spectrogram_plot(samples_gav, sample_rate_gav, 11000)
-   plt.axhline(y = 516,  color = 'r', linestyle = '-', lw= 0.5, label = "Форманты")
-   plt.axhline(y = 947,  color = 'r', linestyle = '-', lw= 0.5)
-   plt.axhline(y = 1378,  color = 'r', linestyle = '-', lw= 0.5)
-   plt.axhline(y = 86,  color = 'r', linestyle = '-', lw= 0.5)
-   plt.legend()
    plt.savefig('results/spectrogram_gav.png', dpi = dpi)
    plt.clf()
 
@@ -88,9 +83,9 @@ if __name__ == '__main__':
    print("\n\nМинимальная частота для звука ГАВ: " + str(formants_gav[0]))
    print("Максимальная частота для звука ГАВ: " + str(formants_gav[-2]))
 
-   print("Тембрально окрашенный тон для звука ГАВ: " + str(formants_gav[0]))
+#    print("Тембрально окрашенный тон для звука ГАВ: " + str(formants_gav[0]))
 
-   power_gav = power(frequencies_gav, spec_gav, 5, formants_gav)
-   power_gav.pop(8268)
-   print(sorted(power_gav.items(), key = lambda item: item[1], reverse=True))
-   print("Четыре самые сильные форманты: " + str(sorted(power_gav, key=lambda i: power_gav[i])[-4:]))
+#    power_gav = power(frequencies_gav, spec_gav, 5, formants_gav)
+#    power_gav.pop(8268)
+#    print(sorted(power_gav.items(), key = lambda item: item[1], reverse=True))
+#    print("Четыре самые сильные форманты: " + str(sorted(power_gav, key=lambda i: power_gav[i])[-4:]))
