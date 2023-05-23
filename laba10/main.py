@@ -86,10 +86,11 @@ if __name__ == '__main__':
    formants_gav.sort()
 
    print("\n\nМинимальная частота для звука ГАВ: " + str(formants_gav[0]))
-   print("Максимальная частота для звука ГАВ: " + str(formants_gav[-1]))
+   print("Максимальная частота для звука ГАВ: " + str(formants_gav[-2]))
 
    print("Тембрально окрашенный тон для звука ГАВ: " + str(formants_gav[0]))
 
    power_gav = power(frequencies_gav, spec_gav, 5, formants_gav)
+   power_gav.pop(8268)
    print(sorted(power_gav.items(), key = lambda item: item[1], reverse=True))
    print("Четыре самые сильные форманты: " + str(sorted(power_gav, key=lambda i: power_gav[i])[-4:]))
